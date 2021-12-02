@@ -52,3 +52,36 @@ h2 {
     display: none;
 }
 
+.btn {
+    font-size: 2.4rem;
+    padding: 2rem 0;
+    width: 30rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-decoration: rgb(29,26,26);
+    color: gold;
+    background-color: purple;
+    border-radius: 15px;
+}
+
+.btn:hover {
+    cursor: pointer;
+    box-shadow: blue;
+    transition: transform 150ms;
+    transform: scale(1.03);
+}
+
+.brn[disabled]:hover {
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+#highscore-btn {
+    background: gold;
+    color: purple;
+}
+
+#highscore-btn:hover {
+    box-shadow: purple;
+}
