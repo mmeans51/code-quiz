@@ -3,7 +3,13 @@ body   {
 }
 
 
+.question {
+    font-size: 20pt;
+}
 
+p.choice-text {
+    color: white;
+}
 .choice-container {
     display: flex;
     margin-bottom: 0.8rem;
@@ -54,7 +60,7 @@ width: 100;
     text-align: center;
 }
 
-#progresBar {
+.progresBar {
     width: 20rem;
     height: 3rem;
     border: 0.2rem solid black;
@@ -63,7 +69,7 @@ width: 100;
     overflow: hidden;
 } 
 
-#progressBarFull {
+.progressBarFull {
     height: 100;
     background: gold;
     width: 0%;
