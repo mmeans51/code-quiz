@@ -10,7 +10,7 @@ let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
 
-let questions = [
+let question = [
     {
         question: "What state is the band Phish from?",
         choice1: "New York",
@@ -20,7 +20,7 @@ let questions = [
         answer: 3,
     }
 ]
-let questions = [
+let question = [
     {
         question: "How long did the Big Cypress show last?",
         choice1: "46 days",
@@ -30,7 +30,7 @@ let questions = [
         answer: 4,
     }
 ]
-let questions = [
+let question = [
     {
         question: "Is this still Lawn Boy?",
         choice1: "NO WAY",
@@ -40,7 +40,7 @@ let questions = [
         answer: 2,
     }
 ]
-let questions = [
+let question = [
     {
         question: "Deduct the _____ carrots from your pay",
         choice1: "Carrots, you worthless swampy fool!",
@@ -50,7 +50,7 @@ let questions = [
         answer: 1,
     }
 ]
-let questions = [
+let question = [
     {
         question: "Who is the 5th member of Phish?",
         choice1: "Karini",
@@ -64,13 +64,60 @@ let questions = [
 const SCORE_POINTS = 100;
 const MAX_QUESTIONS = 5;
 
-STARTgAME = ()  => {
+startGame = ()  => {
 questionCounter = 0;
 score = 0;
-availableQuestions = [...questions]
-getNewQuestion()
+availableQuestions = [...question];
+getNewQuestion();
 }
 
+getNewQuestion = () => {
 if(availableQuestions.length === 0 || questions_Counter > MAX_QUESTIONS) {
+localStorage.setItem('mostRecentScore', score);
+
+return window.location.assign('/end.html')
+}
+
+questionCounter++
+progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`; 
+progressBarFull.style.width = `${(questionCounter/MAX_QUESTIONS) * 100}%`;
+
+const questionsIndex = math.floor(Math.random() * availableQuestions.length);
+currentQuestion = availableQuestions[questionsIndex];
+question.innerText = currentQuestion.question
+
+choices.forEach(choice => {
+    const number = choice.dataset['number'];
+    choice.innerText - currentQuestion['choice' + number];
+})
+
+availableQuestions.splice(questionsIndex, 1);
+
+acceptingAnswers = true;
 
 }
+
+choices.forEach(choice => {
+    choice.addEventListener('click', e => {
+        if(!acceptingAnswers) return
+
+        acceptingAnswers = false;
+        const selectedChoice = e.tartet;
+        const selectedAnswer = selectedChoice.dataset['number']
+
+        let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
+
+        if(classToApply === 'correct') {
+            incrementScore(SCORE_POINTS);
+        }
+
+        selectedChoice.parentElement.classList.add(classToApply);
+
+        setTimeout(() => {
+            selectedChoice.parentElement.classList.remove(classToApply);
+            getNewQuestion();
+
+
+        }, 1000)
+    })
+})
