@@ -3,7 +3,7 @@ const progressText = document.querySelector('#progressText');
 const scoreText = document.querySelector('#score');
 const progressBarFull = document.querySelector('#progressBarFull');
 const choiceContainer = document.querySelector(".choice-container");
-var time = 60;
+var time = 5;
 setInterval(clockTick, 1000)
 
 let currentQuestion = {};
@@ -111,10 +111,13 @@ function clockTick(){
     const timerEl = document.getElementById("timer")
     time--;
     timerEl.textContent = time
-    if(time === 0)
-    return;
-    
+    if(time == 0)
+    clearTimeout(time === 0)
 }
+
+function SCORE_POINTS() {
+    
+};
 // choices.forEach(choice => {
 //     choice.addEventListener('click', e => {
 //         if(!acceptingAnswers) return
