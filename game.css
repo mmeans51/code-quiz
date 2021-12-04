@@ -10,7 +10,7 @@ body   {
 p.choice-text {
     color: white;
 }
-.choice-container {
+p.choice-text {
     display: flex;
     margin-bottom: 0.8rem;
     width: 100%;
@@ -20,7 +20,7 @@ p.choice-text {
     min-width: 80rem;
 }
 
-.choice-container:hover {
+p.choice-text:hover {
     cursor: pointer;
     box-shadow: black;
     transform: scale(1.02);
@@ -79,4 +79,8 @@ width: 100;
     .choice-containter {
         min-width: 40rem;
     }
+}
+
+h5#timer {
+    font-size: 20pt;
 }
