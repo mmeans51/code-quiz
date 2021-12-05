@@ -3,12 +3,13 @@ const progressText = document.querySelector('#progressText');
 const scoreText = document.querySelector('#score');
 const progressBarFull = document.querySelector('#progressBarFull');
 const choiceContainer = document.querySelector(".choice-container");
-var time = 5;
+var time = 30;
+
 setInterval(clockTick, 1000)
 
 let currentQuestion = {};
 let acceptingAnswers = true;
-let score = 0;
+// let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
 
@@ -44,12 +45,11 @@ let questions = [
     },
 ]
 
-const SCORE_POINTS = 100;
-const MAX_QUESTIONS = 5;
+
 
 function startGame() {
 questionCounter = 0;
-score = 0;
+var score = 0;
 availableQuestions = [...questions];
 getNewQuestion();
 }
@@ -94,10 +94,11 @@ function getNewQuestion() {
 function evaluateAnswer(){
     const selectedAnswer = this.getAttribute("value")
     if(selectedAnswer !== questions[questionCounter].answer){
-        console.log("wrong")
+        score-=5;
     }
     else {
         console.log("right")
+        score+=5;
     }
     questionCounter++;
     if(questionCounter===questions.length){
@@ -115,9 +116,12 @@ function clockTick(){
     clearTimeout(time === 0)
 }
 
-function SCORE_POINTS() {
-    
-};
+// function scoreCard() {
+//     const selectedAnswer = this.getAttribute("score")
+//     if(selectedAnswer === questions[questionCounter].answer){
+//     console.log("correct");
+//     }
+// }
 // choices.forEach(choice => {
 //     choice.addEventListener('click', e => {
 //         if(!acceptingAnswers) return
